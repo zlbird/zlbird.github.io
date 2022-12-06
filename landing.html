@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles-landing.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LBird</title>
+    </head>
+    <body id="mainBody">
+        <p class="glow" id="mainPara">Oh! Haha!!</p>
+
+        <script>
+            let queryString = window.location.search;
+
+            queryString = queryString.replace("?", "");
+            let strList = queryString.split("&");
+            let strName = strList[0].replace("name=", "").replaceAll("+", " ").trim().toLowerCase();
+            let strBool = strList[1].replace("like=", "").trim();
+
+            let nameMatch = ["mayank", "rishabh", "risabh", "rishab"];
+
+            function checkNameMatch(uname) {
+                if (strName.includes(uname)) {
+                    if (strBool === "true") {
+                        let para = "Great! He likes you too!! You should ask him to propo....!!";
+                        document.getElementById("mainPara").innerHTML = para;
+                        document.getElementById("mainBody").style.backgroundImage = "url('img/emoji-pos.jpg')";
+                    } else {
+                        let para = "Since I started to talk to you, you made a special place in my heart... I like you! Hope that you also like me..! I will wait for your answer.";
+                        document.getElementById("mainPara").innerHTML = para;
+                    }
+                }
+            };
+
+            nameMatch.forEach(checkNameMatch);
+        </script>
+    </body>
+</html>

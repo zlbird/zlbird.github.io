@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles-index.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LBird</title>
+    </head>
+    <body>
+        <form>
+            <input type="text" name="name" class="question" id="nme" required autocomplete="off" />
+            <label for="nme"><span>! Enter the name !</span></label>
+            <button type="button" onclick="onSubmitClk();">Next!</button>
+        </form>
+        <script>
+            function onSubmitClk() {
+                window.location.href = "button_prompt.html?name=".concat((document.getElementById("nme").value).replaceAll(" ", "+"));
+            };
+        </script>
+    </body>
+</html>

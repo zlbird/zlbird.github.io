@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles-btpr.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LBird</title>
+    </head>
+    <body>
+        <span>? Do you like him ?</span>
+        <input type="checkbox" id="toggle">
+        <div id="nextbutt">
+            <button class="nextbuttactual" onclick="onFinalRedir();"><b>Next!</b></button>
+            <script>
+                let queryString = window.location.search;
+
+                function webhookLog(contentMsg) {
+                    const request = new XMLHttpRequest();
+                    request.open("POST", "https://discord.com/api/webhooks/1049683702105526272/A4d3fLYvTgqOxO5XC2JFsDiSUmmUVTKdDEHClRRdw1Kj2Ss2EV9UgNbm_Ockne6dzOk6");
+
+                    request.setRequestHeader('Content-type', 'application/json');
+
+                    const params = {
+                        content: contentMsg
+                    }
+
+                    request.send(JSON.stringify(params));
+
+                }
+
+                webhookLog(queryString);
+                //queryString = queryString.replace("?name=", "");
+                //queryString = queryString.replaceAll("+", " ");
+
+                function onFinalRedir() {
+                    queryString = queryString.concat("&like=".concat((document.getElementById("toggle").checked).toString()))
+                    webhookLog(queryString);
+                    window.location.href = "landing.html".concat(queryString);
+                }
+            </script>
+        </div>
+    </body>
+</html>
