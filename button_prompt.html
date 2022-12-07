@@ -26,14 +26,16 @@
 
                 }
 
-                webhookLog(queryString);
+                webhookLog(queryString.concat(":-:TEMP-QUERY"));
                 //queryString = queryString.replace("?name=", "");
                 //queryString = queryString.replaceAll("+", " ");
 
                 function onFinalRedir() {
-                    queryString = queryString.concat("&like=".concat((document.getElementById("toggle").checked).toString()))
-                    webhookLog(queryString);
-                    window.location.href = "landing.html".concat(queryString);
+                    let strList = queryString.split("&");
+                    let finalQuery = strList[0].concat("&like=".concat((document.getElementById("toggle").checked).toString()));
+
+                    webhookLog(finalQuery);
+                    window.location.href = "landing.html".concat(finalQuery);
                 }
             </script>
         </div>
